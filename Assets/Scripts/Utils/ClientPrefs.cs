@@ -41,7 +41,7 @@ namespace Unity.BossRoom.Utils
         /// Either loads a Guid string from Unity preferences, or creates one and checkpoints it, then returns it.
         /// </summary>
         /// <returns>The Guid that uniquely identifies this client install, in string form. </returns>
-        public static string GetGuid()
+        public static string GetOrCreateClientGuid()
         {
             if (PlayerPrefs.HasKey(k_ClientGUIDKey))
             {
