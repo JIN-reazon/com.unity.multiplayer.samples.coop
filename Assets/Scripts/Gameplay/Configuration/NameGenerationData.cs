@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Unity.BossRoom.Gameplay.Configuration
@@ -11,15 +12,19 @@ namespace Unity.BossRoom.Gameplay.Configuration
     public class NameGenerationData : ScriptableObject
     {
         [Tooltip("The list of all possible strings the game can use as the first word of a player name")]
-        public string[] FirstWordList;
+        [SerializeField]
+        [FormerlySerializedAs("FirstWordList")]
+        string[] m_FirstWords;
 
         [Tooltip("The list of all possible strings the game can use as the second word in a player name")]
-        public string[] SecondWordList;
+        [SerializeField]
+        [FormerlySerializedAs("SecondWordList")]
+        string[] m_SecondWords;
 
         public string GenerateName()
         {
-            var firstWord = FirstWordList[Random.Range(0, FirstWordList.Length)];
-            var secondWord = SecondWordList[Random.Range(0, SecondWordList.Length)];
+            var firstWord = m_FirstWords[Random.Range(0, m_FirstWords.Length)];
+            var secondWord = m_SecondWords[Random.Range(0, m_SecondWords.Length)];
 
             return firstWord + " " + secondWord;
         }
