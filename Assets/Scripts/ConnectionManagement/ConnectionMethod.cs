@@ -72,10 +72,10 @@ namespace Unity.BossRoom.ConnectionManagement
         {
             if (Services.Core.UnityServices.State != ServicesInitializationState.Initialized)
             {
-                return ClientPrefs.GetGuid() + m_ProfileManager.Profile;
+                return ClientPrefs.GetOrCreateClientGuid() + m_ProfileManager.Profile;
             }
 
-            return AuthenticationService.Instance.IsSignedIn ? AuthenticationService.Instance.PlayerId : ClientPrefs.GetGuid() + m_ProfileManager.Profile;
+            return AuthenticationService.Instance.IsSignedIn ? AuthenticationService.Instance.PlayerId : ClientPrefs.GetOrCreateClientGuid() + m_ProfileManager.Profile;
         }
     }
 
